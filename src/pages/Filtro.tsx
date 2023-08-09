@@ -1,5 +1,7 @@
 import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonDatetime, IonHeader, IonItem, IonLabel, IonPage, IonSelect, IonSelectOption, IonThumbnail, IonTitle, IonToolbar } from "@ionic/react";
 import './Tab1.css';
+
+//imports do db//
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, doc,deleteDoc, getDocs } from "firebase/firestore";
@@ -15,6 +17,7 @@ const firebase = initializeApp( {
     appId: "1:803345331495:web:535ef533e21e19c2a1a502"
   });
 
+//Config do Export//
 const Filtro: React.FC = () => {
     return ( 
         <IonPage>
@@ -39,14 +42,19 @@ const Filtro: React.FC = () => {
                 </IonCard>
                 
                 <IonCard>
-                    
+                {/*card para selecionar qual filtro será usado*/}    
                     
                     <IonItem className="caixaseleciona">
                         <IonSelect label="Escolha por Bairro" labelPlacement="floating" >
                             
                         </IonSelect>
                     </IonItem>
+                {/*final do card de escolhas*/}
+                </IonCard>
 
+
+                <IonCard>
+                {/*Card que aparece ultimos locais*/}
                     <IonCardHeader>
                         
                         <IonCardTitle className='titulocard' >
@@ -62,6 +70,7 @@ const Filtro: React.FC = () => {
                         </IonThumbnail>
                         <IonLabel></IonLabel>
                     </IonItem>
+                {/*final de 'ultimos locais'*/}    
                 </IonCard>
 
             </IonContent>
@@ -70,6 +79,8 @@ const Filtro: React.FC = () => {
 
 }
 
+
+/*Config do db*/
 const [Bairro, setBairro] = useState("");
 const [dia, setdia] = useState("");
 const db = getFirestore(firebase);
